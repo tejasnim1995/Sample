@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Qpathways All in One App</title>
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .title {
+            text-align: left;
+            background-color: rgb(15, 15, 95);
+            color: white;
+            padding: 10px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .buttons button {
+            display: inline-block; /* Display main buttons horizontally */
+            margin: 0 10px; /* Add margin between main buttons */
+            padding: 20px 40px;
+            font-size: 24px;
+        }
+        .sub-buttons {
+            display: none;
+            text-align: left;
+        }
+        .sub-buttons button {
+            display: block; /* Display sub-buttons vertically */
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+        #reset-button {
+            background-color: green; /* Set the reset button color to green */
+            color: white; /* Set text color to white for visibility */
+        }
+    </style>
+    <script>
+        // Function to show the sub-buttons
+        function showSubButtons() {
+            const subButtons = document.querySelectorAll('.sub-buttons');
+            subButtons.forEach((subButton) => {
+                subButton.style.display = 'block';
+            });
+        }
+
+        // Function to reset the buttons and hide sub-buttons
+        function resetButtons() {
+            const subButtons = document.querySelectorAll('.sub-buttons');
+            const environmentButtons = document.querySelectorAll('.environment-button');
+
+            subButtons.forEach((subButton) => {
+                subButton.style.display = 'none';
+            });
+
+            environmentButtons.forEach((button) => {
+                button.style.backgroundColor = '';
+            });
+        }
+
+        // Function to highlight the selected sub-button with a black border
+        function highlightSelectedSubButton(button) {
+            const subButtons = document.querySelectorAll('.sub-buttons button');
+            subButtons.forEach((subButton) => {
+                subButton.style.border = 'none'; // Remove border from all sub-buttons
+            });
+            button.style.border = '2px solid black'; // Add a black border to the selected sub-button
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const environmentButtons = document.querySelectorAll('.environment-button');
+
+            environmentButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    resetButtons();
+                    button.style.backgroundColor = 'yellow';
+                    showSubButtons();
+                });
+            });
+
+            // Add event listener for the reset button
+            const resetButton = document.getElementById('reset-button');
+            resetButton.addEventListener('click', resetButtons);
+
+            // Add event listeners for the sub-buttons
+            const subButtons = document.querySelectorAll('.sub-buttons button');
+
+            subButtons[0].addEventListener('click', () => {
+                const devButton = document.getElementById('dev-button');
+                if (devButton.style.backgroundColor === 'yellow') {
+                    window.open('https://dev.qpathways.com/#/feeds', '_blank');
+                } else if (document.getElementById('qa-button').style.backgroundColor === 'yellow') {
+                    window.open('https://qa.qpathways.com/#/feeds', '_blank');
+                } else if (document.getElementById('staging-button').style.backgroundColor === 'yellow') {
+                    window.open('https://staging.qpathways.com/#/feeds', '_blank');
+                }
+                highlightSelectedSubButton(subButtons[0]);
+            });
+
+            subButtons[1].addEventListener('click', () => {
+                const devButton = document.getElementById('dev-button');
+                if (devButton.style.backgroundColor === 'yellow') {
+                    window.open('https://admin-dev.qpathways.com/', '_blank');
+                } else if (document.getElementById('qa-button').style.backgroundColor === 'yellow') {
+                    window.open('https://admin-qa.qpathways.com/', '_blank');
+                } else if (document.getElementById('staging-button').style.backgroundColor === 'yellow') {
+                    window.open('https://admin-staging.qpathways.com/', '_blank');
+                }
+                highlightSelectedSubButton(subButtons[1]);
+            });
+
+            subButtons[2].addEventListener('click', () => {
+                const devButton = document.getElementById('dev-button');
+                if (devButton.style.backgroundColor === 'yellow') {
+                    window.open('https://qadmin-dev.myqone.com/', '_blank');
+                } else if (document.getElementById('qa-button').style.backgroundColor === 'yellow') {
+                    window.open('https://qadmin-qa.myqone.com/', '_blank');
+                } else if (document.getElementById('staging-button').style.backgroundColor === 'yellow') {
+                    window.open('https://qadmin-staging.myqone.com/', '_blank');
+                }
+                highlightSelectedSubButton(subButtons[2]);
+            });
+
+            subButtons[3].addEventListener('click', () => {
+                const devButton = document.getElementById('dev-button');
+                if (devButton.style.backgroundColor === 'yellow') {
+                    window.open('https://qprime-dev.myqone.com/', '_blank');
+                } else if (document.getElementById('qa-button').style.backgroundColor === 'yellow') {
+                    window.open('https://qprime-qa.myqone.com/', '_blank');
+                } else if (document.getElementById('staging-button').style.backgroundColor === 'yellow') {
+                    window.open('https://qprime-staging.myqone.com/', '_blank');
+                }
+                highlightSelectedSubButton(subButtons[3]);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="title">
+        <h1>Qpathways All in One</h1>
+    </div>
+
+    <div class="buttons">
+        <button id="dev-button" class="environment-button">DEV</button>
+        <button id="qa-button" class="environment-button">QA</button>
+        <button id="staging-button" class="environment-button">Staging</button>
+        <button id="reset-button">Reset</button>
+    </div>
+
+    <!-- Sub-buttons section -->
+    <div class="sub-buttons">
+        <button>Qpathways Portal</button>
+        <button>Qpathways Admin</button>
+        <button>Qadmin</button>
+        <button>Qprime</button>
+    </div>
+</body>
+</html>

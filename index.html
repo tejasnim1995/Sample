@@ -21,23 +21,33 @@
             margin-top: 20px;
         }
         .buttons button {
-            display: inline-block; /* Display main buttons horizontally */
-            margin: 0 10px; /* Add margin between main buttons */
-            padding: 20px 40px;
-            font-size: 24px;
+            display: inline-block;
+            margin: 0 10px;
+            padding: 15px 30px; /* Reduce the size of main buttons */
+            font-size: 18px; /* Reduce the font size of main buttons */
         }
         .sub-buttons {
-            display: none;
             text-align: left;
+            padding: 10px; /* Add padding to the sub-buttons section */
         }
         .sub-buttons button {
-            display: block; /* Display sub-buttons vertically */
+            display: block;
             padding: 10px 20px;
-            font-size: 18px;
+            font-size: 16px; /* Reduce the font size of sub-buttons */
+            margin: 5px 0; /* Add margin between sub-buttons */
+            background-color: #3498db; /* Change background color of sub-buttons */
+            color: white; /* Change text color of sub-buttons */
+            border: none; /* Remove borders from sub-buttons */
+            border-radius: 5px; /* Add rounded corners to sub-buttons */
+            cursor: pointer;
+            transition: background-color 0.3s; /* Add a smooth transition effect */
+        }
+        .sub-buttons button:hover {
+            background-color: #2980b9; /* Change color on hover for sub-buttons */
         }
         #reset-button {
-            background-color: green; /* Set the reset button color to green */
-            color: white; /* Set text color to white for visibility */
+            background-color: green;
+            color: white;
         }
     </style>
     <script>
